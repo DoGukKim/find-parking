@@ -6,11 +6,11 @@ import {
 
 import { Parking } from 'src/domain/parking/type'
 import api from '../api'
-import { ErrorType, GetParkingPayload } from '../api/type'
+import { ErrorType, Payload } from '../type'
 import { queryKey } from './queryKey'
 
 export const useParking = (
-  params?: Partial<GetParkingPayload>,
+  params?: Partial<Payload['getParking']>,
   options?: Omit<UseQueryOptions<Parking[], ErrorType>, 'queryKey' | 'queryFn'>
 ): UseQueryResult<Parking[], ErrorType> => {
   return useQuery(

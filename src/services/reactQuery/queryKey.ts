@@ -1,9 +1,9 @@
-import { GetParkingPayload } from '../api/type'
+import { Payload } from '../type'
 
 const parking = {
   all: ['parking'] as const,
   lists: () => [...parking.all, 'list'] as const,
-  list: (filters?: Partial<GetParkingPayload>) =>
+  list: (filters?: Partial<Payload['getParking']>) =>
     [...parking.lists(), filters] as const,
 }
 

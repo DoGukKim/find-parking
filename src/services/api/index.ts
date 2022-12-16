@@ -1,16 +1,33 @@
-import { Parking } from 'src/domain/parking/type'
+import { AxiosResponse } from 'axios'
+
 import axiosInstance from './AxiosInterceptor'
-import { ErrorType, GetParkingPayload } from './type'
+import { ParkingRowErrorResponse, ParkingRowResponse, Payload } from '../type'
+import { API_RESULT_CODE, ERROR_MESSAGE } from '../constant'
 
-const getParking = async (payload?: Partial<GetParkingPayload>) => {
-  const response = await axiosInstance.get<Parking[], Parking[], ErrorType>(
-    '',
-    {
-      params: payload,
-    }
-  )
+const isErrorReponse = (
+  response: ParkingRowResponse | ParkingRowErrorResponse
+): response is ParkingRowErrorResponse => {
+  return (response as ParkingRowErrorResponse).RESULT !== undefined
+}
 
-  return response
+const getParking = async (payload?: Partial<Payload['getParking']>) => {
+  const response = await axiosInstance.get<
+    ParkingRowResponse,
+    AxiosResponse<ParkingRowResponse>
+  >('', {
+    params: payload,
+  })
+
+  if (response.data.ParkingPlace) {
+    return response.data.ParkingPlace?.[1]?.row
+  } else if (
+    isErrorReponse(response.data) &&
+    response.data.RESULT.CODE?.includes(API_RESULT_CODE.ERROR.type)
+  ) {
+    throw response.data.RESULT
+  } else {
+    throw new Error(ERROR_MESSAGE.server)
+  }
 }
 
 const api = {
