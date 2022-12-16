@@ -1,7 +1,7 @@
 import { ColorScheme } from './type'
 
 export const colorTheme: Readonly<ColorScheme> = {
-  black: '#000',
+  black: '#0000',
   blue50: '#e8f3ff',
   blue200: '#90c2ff',
   blue100: '#c9e2ff',
