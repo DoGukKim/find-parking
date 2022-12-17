@@ -1,13 +1,13 @@
 import { AxiosResponse } from 'axios'
 
 import axiosInstance from './AxiosInterceptor'
-import { ParkingRowErrorResponse, ParkingRowResponse, Payload } from '../type'
+import { ParkingRowResultResponse, ParkingRowResponse, Payload } from '../type'
 import { API_RESULT_CODE, ERROR_MESSAGE } from '../constant'
 
 const isErrorReponse = (
-  response: ParkingRowResponse | ParkingRowErrorResponse
-): response is ParkingRowErrorResponse => {
-  return (response as ParkingRowErrorResponse).RESULT !== undefined
+  response: ParkingRowResponse | ParkingRowResultResponse
+): response is ParkingRowResultResponse => {
+  return (response as ParkingRowResultResponse).RESULT !== undefined
 }
 
 const getParking = async (payload?: Partial<Payload['getParking']>) => {

@@ -4,24 +4,25 @@ import { CityCounty, Parking } from 'src/domain/parking/type'
 import { StringDashString } from 'src/shared/type'
 import { API_RESULT_CODE } from './constant'
 
-type ApiResultCode =
-  | StringDashString<
-      typeof API_RESULT_CODE['ERROR']['type'],
-      typeof API_RESULT_CODE['ERROR']['status'][number]
-    >
-  | StringDashString<
-      typeof API_RESULT_CODE['INFO']['type'],
-      typeof API_RESULT_CODE['INFO']['status'][number]
-    >
+type ApiResultCodeType = keyof typeof API_RESULT_CODE
 
-type ApiResult = {
-  CODE: ApiResultCode
+type ApiErrorCode = StringDashString<
+  Extract<ApiResultCodeType, 'ERROR'>,
+  typeof API_RESULT_CODE['ERROR']['status'][number]
+>
+
+type ApiInfoCode = StringDashString<
+  Extract<ApiResultCodeType, 'INFO'>,
+  typeof API_RESULT_CODE['INFO']['status'][number]
+>
+type ApiResult<T = ApiErrorCode | ApiInfoCode> = {
+  CODE: T
   MESSAGE: string
 }
 
-export type ErrorType = AxiosError | Error | ApiResult
+export type ErrorType = AxiosError | Error | ApiResult<ApiErrorCode>
 
-export type ParkingRowErrorResponse = {
+export type ParkingRowResultResponse = {
   RESULT: ApiResult
 }
 
@@ -32,7 +33,7 @@ export type ParkingRowResponse = {
         {
           list_total_count: number
           api_version: string
-        } & ParkingRowErrorResponse
+        } & ParkingRowResultResponse
       ]
     },
     { row: Parking[] }
