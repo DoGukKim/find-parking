@@ -29,7 +29,7 @@ type TypographyTokenSet<
   TRole extends TypographyRoles,
   TScale extends TypographyScale
 > = `${TRole}-${TScale}`
-type TypographyToken =
+export type TypographyToken =
   | TypographyTokenSet<'headline', 'large'>
   | TypographyTokenSet<'headline', 'medium'>
   | TypographyTokenSet<'headline', 'small'>
