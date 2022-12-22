@@ -1,33 +1,40 @@
-import styled from '@emotion/styled'
-import { useEffect } from 'react'
-
-import useGeolocation, { MAP_ID } from 'src/hooks/useGeolocation'
-import { useParking } from 'src/services/reactQuery'
+import Button from 'src/components/button/Button'
 
 export default function Home() {
-  const { location } = useGeolocation()
-
-  const { data } = useParking()
-
-  useEffect(() => {
-    new naver.maps.Map(MAP_ID, {
-      center: new naver.maps.LatLng(
-        location?.latitude ?? 0,
-        location?.longitude ?? 0
-      ),
-      zoom: 15,
-    })
-  }, [location])
-
+  const click = () => {
+    console.log('hi')
+  }
   return (
     <>
-      <Map id={MAP_ID}></Map>
-      <div>{data && data[0].TMP01}</div>
+      <Button variety="contained" size="large" disabled onClick={click}>
+        contained
+      </Button>
+      <Button variety="contained" size="large" onClick={click}>
+        contained
+      </Button>
+      <Button variety="contained" size="large" onClick={click}>
+        contained
+      </Button>
+
+      <Button variety="outlined" size="large" onClick={click}>
+        outlined
+      </Button>
+      <Button variety="outlined" size="large" onClick={click}>
+        outlined
+      </Button>
+      <Button variety="outlined" size="large" onClick={click}>
+        outlined
+      </Button>
+
+      <Button variety="text" size="large" onClick={click}>
+        text
+      </Button>
+      <Button variety="text" size="large" onClick={click}>
+        text
+      </Button>
+      <Button variety="text" size="large" onClick={click}>
+        text
+      </Button>
     </>
   )
 }
-
-const Map = styled.div`
-  width: 100%;
-  height: 400px;
-`
