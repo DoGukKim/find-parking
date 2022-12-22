@@ -141,6 +141,6 @@ export type CityCounty = keyof typeof CITY_COUNTY_CODE
 
 export type CityCountyCode = typeof CITY_COUNTY_CODE[CityCounty]
 
-type ParkingDivision = typeof PARKING_DIVISION[number]
+export type ParkingDivision = typeof PARKING_DIVISION[number]
 
 type ParkingSpaceType = typeof PARKING_TYPE[number]

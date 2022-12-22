@@ -1,6 +1,6 @@
 import { AxiosError } from 'axios'
 
-import { CityCounty, Parking } from 'src/domain/parking/type'
+import { CityCounty, Parking, ParkingDivision } from 'src/domain/parking/type'
 import { StringDashString } from 'src/shared/type'
 import { API_RESULT_CODE } from './constant'
 
@@ -51,5 +51,6 @@ export type Payload = {
      */
     pSize: number
     SIGUN_NM: CityCounty
+    PARKPLC_DIV_NM: ParkingDivision
   }
 }
