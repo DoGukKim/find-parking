@@ -19,6 +19,6 @@ const Wrapper = styled('div')(({ theme: { media } }) => ({
   maxWidth: mediaSize,
   margin: '0 auto',
   [media]: {
-    // todo: add padding
+    // TODO: add padding
   },
 }))
