@@ -2,9 +2,12 @@ import styled from '@emotion/styled'
 import { useEffect } from 'react'
 
 import useGeolocation, { MAP_ID } from 'src/hooks/useGeolocation'
+import { useParking } from 'src/services/reactQuery'
 
 export default function Home() {
   const { location } = useGeolocation()
+
+  const { data } = useParking()
 
   useEffect(() => {
     new naver.maps.Map(MAP_ID, {
@@ -16,7 +19,12 @@ export default function Home() {
     })
   }, [location])
 
-  return <Map id={MAP_ID}></Map>
+  return (
+    <>
+      <Map id={MAP_ID}></Map>
+      <div>{data && data[0].TMP01}</div>
+    </>
+  )
 }
 
 const Map = styled.div`
