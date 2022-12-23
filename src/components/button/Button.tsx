@@ -1,6 +1,7 @@
 import { ButtonHTMLAttributes, DOMAttributes } from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/react'
+import { Theme } from '@emotion/react'
+import { CSSObject } from '@emotion/serialize'
 
 type ButtonVariation = {
   variety: 'text' | 'contained' | 'outlined'
@@ -18,93 +19,76 @@ const Button = ({
   ...buttonAttributes
 }: ButtonProps) => {
   return (
-    <Wrapper {...buttonAttributes} variety={variety} size={size}>
+    <StyledButton {...buttonAttributes} variety={variety} size={size}>
       {children}
-    </Wrapper>
+    </StyledButton>
   )
 }
 
 export default Button
 
-const Wrapper = styled.button<ButtonVariation>`
-  margin: 10px 0;
+const StyledButton = styled.button<ButtonVariation>(
+  {
+    width: '100%',
+    borderRadius: '6px',
+    backgroundColor: 'transparent',
+    border: 'none',
+  },
+  ({ size }) => SIZE[size],
+  ({ variety, theme }) => VARIETY[variety](theme),
+  ({ theme }) => ({
+    ':disabled': {
+      backgroundColor: theme.color.grey500,
+      cursor: 'default',
+    },
+  })
+)
 
-  width: 100%;
-  border-radius: 6px;
-  background-color: transparent;
-  border: none;
+const SIZE: { [key in ButtonVariation['size']]: CSSObject } = {
+  large: {
+    height: '60px',
+  },
+  medium: {
+    height: '40px',
+  },
+  small: {
+    height: '30px',
+  },
+}
 
-  ${({ size }) => {
-    switch (size) {
-      case 'large':
-        return css`
-          height: 60px;
-        `
-      case 'medium':
-        return css`
-          height: 40px;
-        `
-      default:
-        return css`
-          height: 30px;
-        `
-    }
-  }}
+const VARIETY: {
+  [key in ButtonVariation['variety']]: (theme: Theme) => CSSObject
+} = {
+  contained: (theme: Theme) => ({
+    color: theme.color.white,
+    backgroundColor: theme.color.blue500,
 
-  ${({ theme, variety }) => {
-    switch (variety) {
-      case 'contained':
-        return css`
-          background-color: ${theme.color.blue500};
-          color: ${theme.color.white};
-        `
-      case 'outlined':
-        return css`
-          border: 1px solid ${theme.color.blue500};
-          color: ${theme.color.blue500};
-        `
-      default:
-        return css`
-          color: ${theme.color.blue500};
-        `
-    }
-  }}
+    ':is(:hover, :focus)': {
+      backgroundColor: theme.color.blue600,
+    },
+    ':active': {
+      backgroundColor: theme.color.blue700,
+    },
+  }),
+  outlined: (theme: Theme) => ({
+    border: `1px solid ${theme.color.blue500}`,
+    color: theme.color.blue500,
 
+    ':is(:hover, :focus)': {
+      backgroundColor: theme.color.blue50,
+    },
+    ':active': {
+      backgroundColor: theme.color.blue100,
+    },
+  }),
+  text: (theme: Theme) => ({
+    color: theme.color.blue500,
 
-  &:is(:hover, :focus) {
-    ${({ theme, variety }) => {
-      switch (variety) {
-        case 'contained':
-          return css`
-            background-color: ${theme.color.blue600};
-          `
-        case 'outlined':
-        case 'text':
-          return css`
-            background-color: ${theme.color.blue50};
-          `
-      }
-    }}
-  }
-
-  &:active {
-    ${({ theme, variety }) => {
-      switch (variety) {
-        case 'contained':
-          return css`
-            background-color: ${theme.color.blue700};
-          `
-        case 'outlined':
-        case 'text':
-          return css`
-            background-color: ${theme.color.blue100};
-          `
-      }
-    }}
-  }
-
-  &:disabled {
-    background-color: ${({ theme }) => theme.color.grey500};
-    cursor: default;
-  }
-`
+    ':is(:hover, :focus)': {
+      backgroundColor: theme.color.blue50,
+    },
+    ':active': {
+      backgroundColor: theme.color.blue100,
+    },
+  }),
+}
