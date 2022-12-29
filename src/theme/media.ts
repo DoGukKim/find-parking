@@ -1,4 +1,4 @@
 import { MediaScheme } from './type'
 
-export const mediaTheme: Readonly<MediaScheme> =
-  '@media screen and (max-width: 48.00em)'
+export const maxLayoutWidth = '48.00em'
+export const mediaTheme: Readonly<MediaScheme> = `@media screen and (max-width: ${maxLayoutWidth})`
