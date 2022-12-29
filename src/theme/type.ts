@@ -13,7 +13,7 @@ type ColorLightnessVariation =
   | '800'
   | '900'
 
-type ColorToken =
+export type ColorToken =
   | `${Exclude<Colors, 'black' | 'white'>}${ColorLightnessVariation}`
   | Extract<Colors, 'black' | 'white'>
 
@@ -21,7 +21,7 @@ export type ColorScheme = Record<ColorToken, string>
 
 type TypographyRoles = 'headline' | 'title' | 'body' | 'label'
 type TypographyScale = 'large' | 'medium' | 'small'
-type TypographyToken = StringDashString<TypographyRoles, TypographyScale>
+export type TypographyToken = StringDashString<TypographyRoles, TypographyScale>
 
 type TypographyStyleSheet = Record<
   'fontWeight' | 'fontSize' | 'lineHeight',
