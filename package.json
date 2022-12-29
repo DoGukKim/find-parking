@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/core": "^7.20.5",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@tanstack/react-query": "^4.18.0",
@@ -30,9 +31,11 @@
     "@emotion/babel-plugin": "^11.10.5",
     "@emotion/babel-preset-css-prop": "^11.10.0",
     "@tanstack/react-query-devtools": "^4.18.0",
+    "@types/navermaps": "^3.6.1",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.2",
     "lint-staged": "^13.0.4",
     "prettier": "^2.8.0"
