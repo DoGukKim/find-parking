@@ -1,6 +1,6 @@
 import { TypographyScheme } from './type'
 
-export const typographyTheme: Readonly<TypographyScheme> = {
+export const TYPOGRAPHY_THEME: Readonly<TypographyScheme> = {
   'headline-large': {
     fontSize: '3.2rem',
     fontWeight: '500',

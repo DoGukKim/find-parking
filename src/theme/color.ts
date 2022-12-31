@@ -1,6 +1,6 @@
 import { ColorScheme } from './type'
 
-export const colorTheme: Readonly<ColorScheme> = {
+export const COLOR_THEME: Readonly<ColorScheme> = {
   black: '#000',
   blue50: '#e8f3ff',
   blue200: '#90c2ff',

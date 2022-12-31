@@ -29,5 +29,5 @@ type TypographyStyleSheet = Record<
 >
 export type TypographyScheme = Record<TypographyToken, TypographyStyleSheet>
 
-type MediaSize = '48.00'
-export type MediaScheme = `@media screen and (max-width: ${MediaSize}em)`
+export type MaxLayoutWidth = '768px'
+export type MediaScheme = `@media screen and (max-width: ${MaxLayoutWidth})`
