@@ -13,7 +13,7 @@ type ColorLightnessVariation =
   | '800'
   | '900'
 
-type ColorToken =
+export type ColorToken =
   | `${Exclude<Colors, 'black' | 'white'>}${ColorLightnessVariation}`
   | Extract<Colors, 'black' | 'white'>
 
