@@ -4,7 +4,9 @@ import Script from 'next/script'
 export default function Document() {
   return (
     <Html lang="ko">
-      <Head />
+      <Head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+      </Head>
       <body>
         <Main />
         <NextScript />

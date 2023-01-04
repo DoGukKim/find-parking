@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { SVGAttributes } from 'react'
 
-import { colorTheme } from 'src/theme/color'
+import { COLOR_THEME } from 'src/theme/color'
 import { ColorToken } from 'src/theme/type'
 import { ICON_COMPONENT } from './constant'
 
@@ -25,8 +25,8 @@ const Icon = ({
       <IconComponent
         width={width}
         height={height}
-        stroke={colorTheme[stroke]}
-        fill={!fill ? 'none' : colorTheme[fill]}
+        stroke={COLOR_THEME[stroke]}
+        fill={!fill ? 'none' : COLOR_THEME[fill]}
         strokeWidth="2.0"
       />
     </Wrapper>

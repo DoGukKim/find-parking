@@ -1,15 +1,10 @@
-import Icon from 'src/components/icon/Icon'
+import { NextPageWithLayout } from './_app'
+import { Layout } from 'src/components/layout'
 
-export default function Home() {
-  return (
-    <div>
-      <Icon
-        type="MapPin"
-        width={30}
-        height={32}
-        stroke="green500"
-        fill="blue200"
-      />
-    </div>
-  )
+const Home: NextPageWithLayout = () => {
+  return <div>HOME</div>
 }
+
+export default Home
+
+Home.getLayout = (page) => <Layout meta={{ title: 'home' }}>{page}</Layout>
