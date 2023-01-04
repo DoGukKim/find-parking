@@ -1,4 +1,5 @@
 import { StringDashString } from 'src/shared/type'
+import { MAX_LAYOUT_WIDTH } from './media'
 
 export type Colors = 'black' | 'blue' | 'grey' | 'green' | 'red' | 'white'
 type ColorLightnessVariation =
@@ -29,5 +30,5 @@ type TypographyStyleSheet = Record<
 >
 export type TypographyScheme = Record<TypographyToken, TypographyStyleSheet>
 
-export type MaxLayoutWidth = '768px'
-export type MediaScheme = `@media screen and (max-width: ${MaxLayoutWidth})`
+export type MediaScheme =
+  `@media screen and (max-width: ${typeof MAX_LAYOUT_WIDTH})`
