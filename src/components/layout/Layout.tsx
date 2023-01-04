@@ -1,14 +1,9 @@
-import { ReactElement, ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Frame } from './Frame'
 import { Header, HeaderProps } from './Header'
 
 interface LayoutProps extends HeaderProps {
   children: ReactNode
-}
-
-type GetLayoutProps = {
-  page: ReactElement
-  pageProps: Omit<LayoutProps, 'children'>
 }
 
 export const Layout = ({ children, meta }: LayoutProps) => {
@@ -19,7 +14,3 @@ export const Layout = ({ children, meta }: LayoutProps) => {
     </>
   )
 }
-
-Layout.getLayout = ({ page, pageProps }: GetLayoutProps) => (
-  <Layout {...pageProps}>{page}</Layout>
-)

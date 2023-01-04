@@ -1,13 +1,13 @@
+import { ReactElement, ReactNode } from 'react'
 import type { AppInitialProps, AppProps } from 'next/app'
 import Head from 'next/head'
+import { NextPage } from 'next'
 import { RecoilRoot } from 'recoil'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import { queryClient } from 'src/services/reactQuery/QueryClient'
 import ThemeProvider from 'src/theme/ThemeProvider'
-import { NextPage } from 'next'
-import { ReactElement, ReactNode } from 'react'
 
 export type NextPageWithLayout<P = Record<string, never>, IP = P> = NextPage<
   P,
