@@ -1,4 +1,5 @@
 import { StringDashString } from 'src/shared/type'
+import { MAX_LAYOUT_WIDTH } from './media'
 
 export type Colors = 'black' | 'blue' | 'grey' | 'green' | 'red' | 'white'
 type ColorLightnessVariation =
@@ -13,7 +14,7 @@ type ColorLightnessVariation =
   | '800'
   | '900'
 
-type ColorToken =
+export type ColorToken =
   | `${Exclude<Colors, 'black' | 'white'>}${ColorLightnessVariation}`
   | Extract<Colors, 'black' | 'white'>
 
@@ -21,7 +22,7 @@ export type ColorScheme = Record<ColorToken, string>
 
 type TypographyRoles = 'headline' | 'title' | 'body' | 'label'
 type TypographyScale = 'large' | 'medium' | 'small'
-type TypographyToken = StringDashString<TypographyRoles, TypographyScale>
+export type TypographyToken = StringDashString<TypographyRoles, TypographyScale>
 
 type TypographyStyleSheet = Record<
   'fontWeight' | 'fontSize' | 'lineHeight',
@@ -29,5 +30,5 @@ type TypographyStyleSheet = Record<
 >
 export type TypographyScheme = Record<TypographyToken, TypographyStyleSheet>
 
-type MediaSize = '48.00'
-export type MediaScheme = `@media screen and (max-width: ${MediaSize}em)`
+export type MediaScheme =
+  `@media screen and (max-width: ${typeof MAX_LAYOUT_WIDTH})`

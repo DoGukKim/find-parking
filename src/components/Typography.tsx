@@ -2,7 +2,7 @@ import { ElementType, ReactNode } from 'react'
 import styled from '@emotion/styled'
 
 import { TypographyToken } from 'src/theme/type'
-import { typographyTheme } from 'src/theme/typography'
+import { TYPOGRAPHY_THEME } from 'src/theme/typography'
 
 type TypoProps = {
   as?: ElementType
@@ -21,5 +21,5 @@ const Typo = ({ as, children, role }: TypoProps) => {
 export default Typo
 
 const Text = styled('p')<TypoProps>(({ role }) => ({
-  ...typographyTheme[role],
+  ...TYPOGRAPHY_THEME[role],
 }))
