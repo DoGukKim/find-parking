@@ -57,5 +57,6 @@ export const globalStyle = css`
 
   #__next {
     height: 100%;
+    background-color: #f9fafb;
   }
 `
