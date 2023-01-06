@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
-
-export const MAP_ID = 'naver-map'
-
-type Location = { latitude: number; longitude: number }
+import { Location } from 'src/domain/map/type'
 
 function useGeolocation() {
   const [location, setLocation] = useState<Location>()
@@ -12,8 +9,8 @@ function useGeolocation() {
       navigator.geolocation.getCurrentPosition(
         ({ coords: { latitude, longitude } }) => {
           setLocation({
-            latitude,
-            longitude,
+            lat: latitude,
+            lng: longitude,
           })
         }
       )
