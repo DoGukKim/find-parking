@@ -12,7 +12,7 @@ export const COLOR_THEME: Readonly<ColorScheme> = {
   blue700: '#1b64da',
   blue800: '#1957c2',
   blue900: '#194aa6',
-  grey50: '#f9faf',
+  grey50: '#f9fafb',
   grey100: '#f2f4f6',
   grey200: '#e5e8eb',
   grey300: '#d1d6db',
