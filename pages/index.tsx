@@ -2,7 +2,7 @@ import { NextPageWithLayout } from './_app'
 import { Layout } from 'src/components/layout'
 
 const Home: NextPageWithLayout = () => {
-  return <div>HOME</div>
+  return <div></div>
 }
 
 export default Home
