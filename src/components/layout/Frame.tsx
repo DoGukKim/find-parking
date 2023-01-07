@@ -11,11 +11,12 @@ export const Frame = ({ children }: FrameProps) => {
   return <Wrapper>{children}</Wrapper>
 }
 
-const Wrapper = styled('div')(({ theme: { media } }) => ({
+const Wrapper = styled('div')(({ theme: { color, media } }) => ({
   width: '100%',
   height: '100%',
   maxWidth: MAX_LAYOUT_WIDTH,
   margin: '0 auto',
+  backgroundColor: color.white,
   [media]: {
     // TODO: add padding
   },

@@ -1,4 +1,5 @@
 import { css } from '@emotion/react'
+import { COLOR_THEME } from './color'
 
 const reset = css`
   * {
@@ -57,5 +58,6 @@ export const globalStyle = css`
 
   #__next {
     height: 100%;
+    background-color: ${COLOR_THEME.grey50};
   }
 `
