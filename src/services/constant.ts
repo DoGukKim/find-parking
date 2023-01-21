@@ -1,5 +1,6 @@
 export const ERROR_MESSAGE = {
   server: '서버 에러입니다.',
+  noResult: '해당하는 데이터가 없습니다.',
 } as const
 
 export const API_RESULT_CODE = {
